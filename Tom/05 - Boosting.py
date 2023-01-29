@@ -5,8 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
 from sklearn.metrics import mean_absolute_error
 
-df = pd.read_csv("w2vAverage.csv")
-
+df = pd.read_csv("Model_W2V.csv")
 rating = df['IMDbRating']
 xdf = df.drop('IMDbRating', axis=1, inplace=False)
 

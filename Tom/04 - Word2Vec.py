@@ -16,7 +16,7 @@ def preprocess_text(text):
 
 
 # Load the dataset with movie titles and plots
-df = pd.read_csv('VAEData.csv')
+df = pd.read_csv('PreProcessedData.csv')
 
 # Preprocess and tokenize the text
 df['plot_tokens'] = df['Plot'].apply(lambda x: word_tokenize(preprocess_text(x)))
@@ -65,4 +65,4 @@ df.drop('plot_tokens', axis=1, inplace=True)
 df.drop('Title', axis=1, inplace=True)
 df.drop('title_tokens', axis=1, inplace=True)
 
-df.to_csv("w2vAverage.csv", index=False)
+df.to_csv("Model_W2V.csv", index=False)
