@@ -5,15 +5,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
 from sklearn.metrics import mean_absolute_error
 
-df = pd.read_csv("Model_W2V.csv")
-rating = df['IMDbRating']
-xdf = df.drop('IMDbRating', axis=1, inplace=False)
+params = {'colsample_bytree': 0.1, 'max_depth': 11.634745946255054, 'max_leaves': 36.048274745276096, 'min_child_weight': 114.17706174190377, 'subsample': 0.1}
 
-
-# Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(xdf, rating, test_size=0.2, random_state=42)
-X_train.to_csv("X_Train.csv")
-# Import XGBoost
+X_train = pd.read_csv("X_Train.csv")
+y_train = pd.read_csv("y_train.csv")
+X_test = pd.read_csv("X_test.csv")
+y_test = pd.read_csv("y_test.csv")
 
 # Create the XGBoost model
 xgb_model = xgb.XGBRegressor()
@@ -38,7 +35,7 @@ for train_index, val_index in kf.split(X_train):
     # Make predictions on the validation data
     y_pred_fold = xgb_model.predict(X_val_fold)
     # Compute the MAE score
-    baseline = mean_absolute_error(y_val_fold, np.array([7] * len(y_pred_fold)))
+    baseline = mean_absolute_error(y_val_fold, np.array([np.mean(y_train['IMDbRating'])] * len(y_pred_fold)))
     mae = mean_absolute_error(y_val_fold, y_pred_fold)
     print(mae)
     print(baseline)
@@ -52,5 +49,7 @@ average_baseline = sum(baseline_scores) / len(baseline_scores)
 print("Average Baseline:", average_baseline)
 
 y_pred = xgb_model.predict(X_test)
-results = pd.DataFrame({'Actual': y_test, 'Prediction': y_pred})
+print(y_pred)
+print(y_test)
+results = pd.DataFrame({'Actual': y_test['IMDbRating'], 'Prediction': y_pred})
 results.to_csv('results.csv', index=False)

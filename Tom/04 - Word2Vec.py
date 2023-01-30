@@ -6,7 +6,7 @@ import nltk
 import numpy as np
 
 
-# nltk.download('punkt')
+nltk.download('punkt')
 
 def preprocess_text(text):
     text = text.lower()
