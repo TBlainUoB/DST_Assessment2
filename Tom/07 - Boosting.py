@@ -5,8 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
 from sklearn.metrics import mean_absolute_error
 
-params = {'colsample_bytree': 0.1, 'max_depth': 11.634745946255054, 'max_leaves': 36.048274745276096, 'min_child_weight': 114.17706174190377, 'subsample': 0.1}
-
 X_train = pd.read_csv("X_Train.csv")
 y_train = pd.read_csv("y_train.csv")
 X_test = pd.read_csv("X_test.csv")
@@ -44,9 +42,7 @@ for train_index, val_index in kf.split(X_train):
 
 # Compute the average MAE score
 average_mae = sum(mae_scores) / len(mae_scores)
-print("Average MAE:", average_mae)
 average_baseline = sum(baseline_scores) / len(baseline_scores)
-print("Average Baseline:", average_baseline)
 
 y_pred = xgb_model.predict(X_test)
 print(y_pred)

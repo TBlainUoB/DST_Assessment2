@@ -5,19 +5,19 @@ from sklearn.model_selection import cross_val_score
 from bayes_opt import BayesianOptimization
 from sklearn.model_selection import KFold
 
-def evaluate_model(max_leaves, min_child_weight, colsample_bytree, subsample, max_depth):
+def evaluate_model(min_child_weight, colsample_bytree, subsample, max_depth, eta, lambda1, alpha):
     params = {
+        "eta": eta,
+        "lambda": lambda1,
+        "alpha": alpha,
         "objective": "reg:squarederror",
         "booster": "gbtree",
-        "learning_rate": 0.07,
-        "verbosity": 1,
-        "max_leaves": int(max_leaves),
         "min_child_weight": min_child_weight,
         "colsample_bytree": colsample_bytree,
         "subsample": subsample,
         'max_depth': int(max_depth)
     }
-    num_boost_round = 10000
+    num_boost_round = 500
 
     # define the number of folds for cross-validation
     n_folds = 5
@@ -43,20 +43,22 @@ def evaluate_model(max_leaves, min_child_weight, colsample_bytree, subsample, ma
         dtrain = xgb.DMatrix(X_train_fold, y_train_fold)
         dval = xgb.DMatrix(X_val_fold, y_val_fold)
         evals = [(dtrain, 'train'), (dval, 'eval')]
-        model = xgb.train(params, dtrain, num_boost_round, evals=evals, early_stopping_rounds=100, verbose_eval=100)
+        model = xgb.train(params, dtrain, num_boost_round, evals=evals, verbose_eval=100, early_stopping_rounds=100)
         #print(model.best_score)
-        scores.append(model.best_score)
+        scores.append(model.best_iteration)
 
     # return the mean evaluation metric across all folds
     return np.mean(scores)
 
 # define the hyperparameters to be optimised
 hyperparameters = {
-    "max_leaves": (4, 50),
-    "min_child_weight": (0.001, 150),
+    "eta": (0.01, 0.07),
+    "lambda1": (0, 1),
+    "alpha": (0, 10),
+    "min_child_weight": (0.5, 20),
     "colsample_bytree": (0.1, 0.9),
-    "subsample": (0.1, 1),
-    'max_depth': (3, 20)
+    "subsample": (0.4, 1),
+    'max_depth': (1, 20)
 }
 #UNCOMMENT TO START BAYESIAN OPTIMISATION ~10 MINS
 

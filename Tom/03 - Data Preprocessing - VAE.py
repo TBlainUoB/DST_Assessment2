@@ -47,7 +47,7 @@ def VAE_actors(df):
 
     # Select only the one-hot encoded columns for actors with more than 5 movie appearances
     actor_dummies = actor_dummies[actor_counts.index]
-
+    df = pd.concat([df, actor_dummies], axis=1)
     df.drop('Actors', axis=1, inplace=True)
 
     # Create VAE
