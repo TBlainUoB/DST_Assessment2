@@ -6,7 +6,7 @@
 
 ## Project Group
 
-* Daniel Gardener
+* Daniel Gardner
 * Hannah Harrison
 * Tom Blain
 * Ziyuan Jiang 
