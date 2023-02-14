@@ -31,7 +31,7 @@ def OHE_Genre(df):
     film_df.drop('Genre', axis=1, inplace=True)
     return film_df
 
-
+'''
 def VAE_actors(df):
     # Get all unique actors in the dataset
     film_actors = df['Actors'].str.split(',', expand=True).replace(" ", "")
@@ -83,11 +83,11 @@ def VAE_actors(df):
         df['encoded_actor_' + str(i)] = encoded_actors[:, i]
 
     return df
-
+'''
 df = pd.read_csv("Movie_database_BritishAmerican2000-2021.csv")
 df = RemoveDuplicates(df)
 df = RemoveNA(df)
 df = OHE_Genre(df)
-df = VAE_actors(df)
+#df = VAE_actors(df)
 
 df.to_csv("PreProcessedData.csv", index=False)

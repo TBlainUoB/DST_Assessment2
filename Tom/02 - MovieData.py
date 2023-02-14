@@ -1,16 +1,16 @@
 import pandas as pd
 import numpy as np
 import requests
-from APIKEY import api
+#from APIKEY import api
 
 # Set the API endpoint URL
 url = "http://www.omdbapi.com/"
-api_key = api()
+api_key = "6b3f54ac"
 
 # Set the API key and search parameters
-titles_british = pd.read_csv("MovieTitles2000-2021_British.csv")["0"].to_list()
+#titles_british = pd.read_csv("MovieTitles2000-2021_British.csv")["0"].to_list()
 titles_american = pd.read_csv("MovieTitles2000-2021_American.csv")["0"].to_list()
-titles = titles_british + titles_american
+titles = titles_american
 
 movie_data = []
 count = 0
@@ -23,6 +23,7 @@ for i in titles:
         "type": "movie"
     })
     data = response.json()
+    print(data)
     count += 1
     if count % 10 == 0:
         print(data["Response"], count)
