@@ -21,9 +21,9 @@ All report content is in the directory:
 The report is structured as follows:
 * 01 - Introduction.md
 * 02 - Data 
-* 03 - EDA
+* 03 - EDA.ipynb
 * 04 - Preprocessing
-* 05 - LDA
+* 05 - LDA.ipynb
 * 06 - Boosted model
 * 07 - Evaluation
 * 08 - Conclusion
