@@ -11,6 +11,7 @@ api_key = "6b3f54ac"
 #titles_british = pd.read_csv("MovieTitles2000-2021_British.csv")["0"].to_list()
 titles_american = pd.read_csv("MovieTitles2000-2021_American.csv")["0"].to_list()
 titles = titles_american
+print(titles)
 
 movie_data = []
 count = 0
