@@ -2,7 +2,7 @@
 
 ## Description
 
-
+An investigation into whether topic models of plot summaries aid in predicting the IMDb rating of British and American movies. This project was produced for the Data Science Toolbox module at Bristol University.
 
 ## Project Group
 
@@ -21,9 +21,9 @@ All report content is in the directory:
 The report is structured as follows:
 * 01 - Introduction.md
 * 02 - Data 
-* 03 - EDA
+* 03 - EDA.ipynb
 * 04 - Preprocessing
-* 05 - LDA
+* 05 - LDA.ipynb
 * 06 - Boosted model
 * 07 - Evaluation
 * 08 - Conclusion
@@ -36,10 +36,10 @@ All python requirements are given within each script.
 
 Our working is shown in our own directories,
 
-* \Daniel
-* \Hannah
-* \Tom
-* \Ziyuan
+* /Daniel
+* /Hannah
+* /Tom
+* /Ziyuan
 
 
 
