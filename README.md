@@ -20,13 +20,13 @@ All report content is in the directory:
 
 The report is structured as follows:
 * 01 - Introduction.md
-* 02 - Data 
+* 02 - Dataset.ipynb
 * 03 - EDA.ipynb
-* 04 - Preprocessing
+* 04 - Preprocessing.ipynb
 * 05 - LDA.ipynb
-* 06 - Boosted model
-* 07 - Evaluation
-* 08 - Conclusion
+* 06 - LDA&HDP.ipynb
+* 07 - XGBoost_Model.ipynb
+* 08 - Evaluation.ipynb
 
 ## Requirements
 
