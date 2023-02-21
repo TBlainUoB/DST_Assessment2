@@ -25,8 +25,9 @@ The report is structured as follows:
 * 04 - Preprocessing.ipynb
 * 05 - LDA.ipynb
 * 06 - LDA&HDP.ipynb
-* 07 - XGBoost_Model.ipynb
-* 08 - Evaluation.ipynb
+* 07 - Transformer_Embeddings.ipynb
+* 08 - XGBoost_Model.ipynb
+* 09 - Evaluation.ipynb
 
 ## Requirements
 
