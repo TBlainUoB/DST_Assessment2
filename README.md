@@ -47,3 +47,7 @@ Our working is shown in our own directories,
 ## Reflections
 
 Reflections will be uploaded individually via the blackboard submission point.
+
+## Equity
+
+25/25/25/25
